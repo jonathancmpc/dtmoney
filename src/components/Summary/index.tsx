@@ -1,15 +1,23 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import incomeImg from '../../assets/income.svg';
 import outcomeImg from '../../assets/outcome.svg';
 import totalImg from '../../assets/total.svg';
 import { api } from '../../Services/api';
 import { Container } from './styles';
 
+interface Transactions {
+  title: string;
+  amount: number;
+  type: string;
+  category: string;
+}
+
 export function Summary() {
+  const [transactions, setTransactions] = useState<Transactions[]>([]);
 
   useEffect(() => {
     api.get('transactions')
-      .then(response => console.log(response.data))
+      .then(response => setTransactions(response.data))
   }, []);
 
   return (
