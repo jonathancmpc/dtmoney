@@ -25,7 +25,9 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
       title,
       value,
       type,
-      category
+      category,
+      /* date: `${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()}`,*/
+      date: new Date(),
     }
 
     api.post('/transactions', data);
