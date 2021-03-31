@@ -4,7 +4,7 @@ import { Container } from './styles';
 
 export function TransactionTable() {
   
-  const transactions = useContext(TransactionsContext);
+  const { transactions } = useContext(TransactionsContext);
 
   return (
     <Container>
@@ -23,6 +23,7 @@ export function TransactionTable() {
             <tr key={transaction.id}>
               <td>{transaction.title}</td>
               <td className={transaction.type}>
+                {transaction.type == 'withdraw' && '- '}
                 {new Intl.NumberFormat('pt-BR', {
                   style: 'currency',
                   currency: 'BRL'
