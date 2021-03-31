@@ -5,19 +5,21 @@ import totalImg from '../../assets/total.svg';
 import { api } from '../../Services/api';
 import { Container } from './styles';
 
-interface Transactions {
+interface Transaction {
+  id: number;
   title: string;
   amount: number;
   type: string;
   category: string;
+  createdAt: string;
 }
 
 export function Summary() {
-  const [transactions, setTransactions] = useState<Transactions[]>([]);
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
 
   useEffect(() => {
-    api.get('transactions')
-      .then(response => setTransactions(response.data))
+    api.get('/transactions')
+      .then(response => setTransactions(response.data.transactions));
   }, []);
 
   return (

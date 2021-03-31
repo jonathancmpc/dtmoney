@@ -26,7 +26,6 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
       value,
       type,
       category,
-      /* date: `${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()}`,*/
       date: new Date(),
     }
 
